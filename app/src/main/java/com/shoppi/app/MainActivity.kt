@@ -2,6 +2,9 @@ package com.shoppi.app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // Compat 키워드? : 이전버전 구현체와 호환성을 가진다는 의미
 class MainActivity : AppCompatActivity() {
@@ -9,6 +12,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) // layout inflate
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation_main)
+        bottomNavigationView.itemIconTintList = null // Theme의 Primary color 값을 초기화 시킴 (icon 그라데이션을 위헤)
+
+        // navHostFragment에 대해 접근, navHostFragment가 소유한 navController를 반환
+        val navController = supportFragmentManager.findFragmentById(R.id.container_main)?.findNavController()
+        navController?.let {
+            // navController : NavHostFragment에서 목적지 이동을 관리하는 객체
+            bottomNavigationView.setupWithNavController(it) // bottomNavigationView와 FragmentContainerView의 NavHost를 연결시킴(item의 id가 같아야함)
+        }
     }
 
     // onStart : 액티비티가 실행될 때, 불림 (ex. start animation, refresh data)
