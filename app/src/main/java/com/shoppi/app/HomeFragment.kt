@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 class HomeFragment: Fragment() {
 
@@ -27,10 +28,13 @@ class HomeFragment: Fragment() {
 
         // abstract의 method가 하나만 존재할 때(Single Abstract Method) => lambda로 변경 가능
         button.setOnClickListener {
-            // transaction : Fragment를 추가, 삭제, 수정을 요청하는 것
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.add(R.id.container_main, ProductDetailFragment())
-            transaction.commit() // transaction이 실행되기 위해서는 마지막에 commit해주어야함
+//            // transaction : Fragment를 추가, 삭제, 수정을 요청하는 것
+//            val transaction = parentFragmentManager.beginTransaction()
+//            transaction.add(R.id.container_main, ProductDetailFragment())
+//            transaction.commit() // transaction이 실행되기 위해서는 마지막에 commit해주어야함
+
+            // action의 id를 넣어 네비게이션 동작
+            findNavController().navigate(R.id.action_home_to_product_detail)
         }
     }
 }
