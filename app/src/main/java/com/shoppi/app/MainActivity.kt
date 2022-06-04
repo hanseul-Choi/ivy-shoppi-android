@@ -3,14 +3,12 @@ package com.shoppi.app
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-private const val TAG = "MainActivity"
-
 // Compat 키워드? : 이전버전 구현체와 호환성을 가진다는 의미
 class MainActivity : AppCompatActivity() {
     // onCreate : Activity가 생성되고 최초 한번만 불림 (ex. layout inflate, init data)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_detail) // layout inflate
+        setContentView(R.layout.activity_main) // layout inflate
     }
 
     // onStart : 액티비티가 실행될 때, 불림 (ex. start animation, refresh data)
@@ -37,4 +35,15 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
     }
+
+    /*
+    fragmentManager : Activity에 fragment를 붙였다 떼었다하며 관리하는 객체
+    Host fragment layout은 Host Activity layout이 있어야 생성할 수 있음,
+    Host Fragment layout은 child fragment들을 관리함
+
+    (Host Activity)FragmentActivity -> FragmentManager
+    (Host Fragment)Fragment -> parentFragmentManager(= Host Activity의 FragmentManager)
+    (Host Fragment)Fragment -> childFragmentManager
+    (Child Fragment)Fragment -> parentFragmentManager(= Host Fragment의 FragmentManager)
+    */
 }
