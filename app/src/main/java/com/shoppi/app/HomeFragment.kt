@@ -1,6 +1,7 @@
 package com.shoppi.app
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,5 +37,10 @@ class HomeFragment: Fragment() {
             // action의 id를 넣어 네비게이션 동작
             findNavController().navigate(R.id.action_home_to_product_detail)
         }
+
+        val assetLoader = AssetLoader()
+        // requireContext() : 항상 non-null의 context를 return
+        val homeData = assetLoader.getJsonString(requireContext(), "home.json")
+        Log.d("homeData", homeData ?: "")
     }
 }
