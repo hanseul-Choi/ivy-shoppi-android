@@ -56,4 +56,11 @@
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">@color/shoppi_black_01</item>
     </style>
+
+    <!-- home appbar text style -->
+    <style name="AppBarText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/shoppi_black_02</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
