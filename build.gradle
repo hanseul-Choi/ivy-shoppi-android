@@ -7,6 +7,7 @@ plugins {
 
 ext {
     navVersion = '2.4.1'
+    glideVersion = '4.11.0'
 }
 
 task clean(type: Delete) {

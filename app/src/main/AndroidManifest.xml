@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shoppi.app">
 
+    <!-- internet permission for glide -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <!--
     allowBackUp : 사용자의 구글 드라이브에 자동으로 저장(25mb 까지)
     roundIcon : 제조사마다 폰의 아이콘이 둥글거나 사각형일 수 있음
