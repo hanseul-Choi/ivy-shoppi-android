@@ -4,6 +4,7 @@
 
     <!-- internet permission for glide -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <!--
     allowBackUp : 사용자의 구글 드라이브에 자동으로 저장(25mb 까지)

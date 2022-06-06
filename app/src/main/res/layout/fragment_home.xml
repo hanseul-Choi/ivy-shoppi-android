@@ -7,35 +7,42 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/shoppi_white">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!--
+         Toolbar는 viewGroup을 상속받고 있기 때문에 하위에 View들을 배치 가능
+         contentInsetStart : Toolbar는 기본적으로 margin을 가지고 있어 해당 margin을 없애기 위해 사용
+         -->
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp">
+            android:background="@color/shoppi_white"
+            app:contentInsetStart="0dp"
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <TextView
-                android:id="@+id/tv_fragment_home_appbar"
-                style="@style/AppBarText"
-                android:layout_width="wrap_content"
+                android:id="@+id/toolbar_home_title"
+                style="@style/TextHeadLine5.Black02.Bold"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="72dp"
+                android:maxLines="2"
+                android:paddingStart="16dp"
+                android:paddingTop="32dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="24dp"
                 tools:text="Han님, 이런상품\n어때요?" />
 
             <ImageView
-                android:id="@+id/iv_fragment_home_appbar_icon"
+                android:id="@+id/toolbar_home_icon"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
+                android:layout_gravity="end"
                 android:layout_marginEnd="4dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_fragment_home_appbar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_fragment_home_appbar" />
+                android:scaleType="center"
+                tools:src="@drawable/ic_gnb_back" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -48,15 +55,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn_enter_product_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="상품 상세"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
