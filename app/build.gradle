@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -61,4 +62,7 @@ dependencies {
     // fragment viewmodel-ktx
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
 
+    // firebase
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

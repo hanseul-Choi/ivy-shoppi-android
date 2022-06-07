@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1098463058818",
+    "project_id": "ivy-shoppi",
+    "storage_bucket": "ivy-shoppi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098463058818:android:2bf60d396b8bd22d500d9b",
+        "android_client_info": {
+          "package_name": "com.shoppi.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098463058818-k52onudpi8qnhulh05mfrtvd6s2mfchd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAoLDJgGUoMyV-3tAhRNSce6rJYjZFan8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098463058818-k52onudpi8qnhulh05mfrtvd6s2mfchd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
