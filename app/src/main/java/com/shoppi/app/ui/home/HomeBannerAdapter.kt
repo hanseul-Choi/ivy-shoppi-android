@@ -1,4 +1,4 @@
-package com.shoppi.app
+package com.shoppi.app.ui.home
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -10,11 +10,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.shoppi.app.model.Banner
+import com.shoppi.app.GlideApp
+import com.shoppi.app.R
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 // ListAdapter : data의 List로 받아서 0번째부터 순차적으로 binding함, inflate한 뷰에 그대로 데이터만 변경하여 이점을 얻음
-class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
+class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
+    BannerDiffCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home_banner, parent, false)
