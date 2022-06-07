@@ -1,10 +1,11 @@
-package com.shoppi.app
+package com.shoppi.app.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.shoppi.app.R
 
 // Compat 키워드? : 이전버전 구현체와 호환성을 가진다는 의미
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.shoppi.app
+package com.shoppi.app.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -8,13 +8,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
-import org.json.JSONObject
+import com.shoppi.app.*
 
 class HomeFragment : Fragment() {
+
+    private val viewModel: HomeViewModel by viewModels()
 
     // onCreateView: inflate하기 위한 callback method
     override fun onCreateView(
@@ -58,12 +62,14 @@ class HomeFragment : Fragment() {
             // use gson
             val gson = Gson()
             val homeData = gson.fromJson(homeJsonString, HomeData::class.java)
-            homeData.title
 
-            toolbarTitle.text = homeData.title.text
-            GlideApp.with(this)
-                .load(homeData.title.iconUrl)
-                .into(toolbarIcon)
+            // viewLifecycleOwner : lifecycle이 변경됨에 따라 현재 객체 상태를 알고 있는 것
+            viewModel.title.observe(viewLifecycleOwner) { title ->
+                toolbarTitle.text = title.text
+                GlideApp.with(this)
+                    .load(title.iconUrl)
+                    .into(toolbarIcon)
+            }
 
 //            // gson을 사용하기 전에는 수많은 보일러 플레이트 코드가 존재
 
@@ -90,9 +96,11 @@ class HomeFragment : Fragment() {
 //                )
 //            }
 
-            // ListAdapter에 data를 전달하기 위해 submitList 메소드를 이용
-            viewpager.adapter = HomeBannerAdapter().apply {
-                submitList(homeData.topBanners)
+            viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
+                // ListAdapter에 data를 전달하기 위해 submitList 메소드를 이용
+                viewpager.adapter = HomeBannerAdapter().apply {
+                    submitList(banners)
+                }
             }
 
             // dp를 pixel로 바꾸기위해서 사용, res/dimens 로 전달

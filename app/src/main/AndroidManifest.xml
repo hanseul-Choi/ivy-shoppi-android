@@ -20,7 +20,7 @@
         android:theme="@style/Theme.Shoppi">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Shoppi.Splash">
             <intent-filter>
@@ -33,7 +33,7 @@
         exported : 다른 구성요소로 이 activity를 실행할 수 있는지
         -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="false">
 
         </activity>
