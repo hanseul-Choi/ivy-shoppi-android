@@ -67,11 +67,15 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     // Network
-    implementation "com.sqaureup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     // Network 통신 결과를 로그로 찍어줌
     implementation platform("com.squareup.okhttp3:okhttp-bom:4.9.0")
     implementation "com.squareup.okhttp3:okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor"
+
+    // viewmodel-coroutine
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1' // viewModel scope 사용가능
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 }

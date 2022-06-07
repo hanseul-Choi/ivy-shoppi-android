@@ -10,7 +10,7 @@ import retrofit2.http.GET
 interface ApiClient {
 
     @GET("categories.json")
-    fun getCategories() : List<Category>
+    suspend fun getCategories() : List<Category>
 
     companion object {
 

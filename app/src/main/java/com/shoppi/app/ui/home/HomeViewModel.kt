@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shoppi.app.model.Banner
 import com.shoppi.app.model.Title
-import com.shoppi.app.repository.HomeRepository
+import com.shoppi.app.repository.home.HomeRepository
 
 // 생명주기를 고려하여 데이터를 관리할 수 있음
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
