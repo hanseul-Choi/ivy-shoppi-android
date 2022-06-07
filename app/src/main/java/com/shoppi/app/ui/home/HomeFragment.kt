@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.shoppi.app.*
+import com.shoppi.app.databinding.FragmentHomeBinding
 import com.shoppi.app.ui.common.ViewModelFactory
 
 class HomeFragment : Fragment() {
@@ -19,20 +16,25 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels {
         ViewModelFactory(requireContext())
     }
+    private lateinit var binding: FragmentHomeBinding
 
     // onCreateView: inflate하기 위한 callback method
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         // attachToRoot : 바로 루트뷰에 추가할 것인가?
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return binding.root
     }
 
     // (parameter)view : onCreateView에서 return된 view를 가져옴
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // binding 작업
+        binding.lifecycleOwner = viewLifecycleOwner
 
 //        val button = view.findViewById<Button>(R.id.btn_enter_product_detail)
 //
@@ -47,11 +49,6 @@ class HomeFragment : Fragment() {
 //            findNavController().navigate(R.id.action_home_to_product_detail)
 //        }
 
-        val toolbarTitle = view.findViewById<TextView>(R.id.toolbar_home_title)
-        val toolbarIcon = view.findViewById<ImageView>(R.id.toolbar_home_icon)
-        val viewpager = view.findViewById<ViewPager2>(R.id.viewpager_home_banner)
-        val viewpagerIndicator = view.findViewById<TabLayout>(R.id.viewpager_home_banner_indicator)
-
 //        val assetLoader = AssetLoader()
 //        // requireContext() : 항상 non-null의 context를 return
 //        val homeJsonString = assetLoader.getJsonString(requireContext(), "home.json")
@@ -63,12 +60,7 @@ class HomeFragment : Fragment() {
 //        val homeData = gson.fromJson(homeJsonString, HomeData::class.java)
 
         // viewLifecycleOwner : lifecycle이 변경됨에 따라 현재 객체 상태를 알고 있는 것
-        viewModel.title.observe(viewLifecycleOwner) { title ->
-            toolbarTitle.text = title.text
-            GlideApp.with(this)
-                .load(title.iconUrl)
-                .into(toolbarIcon)
-        }
+        setToolbar()
 
 //            // gson을 사용하기 전에는 수많은 보일러 플레이트 코드가 존재
 
@@ -95,26 +87,39 @@ class HomeFragment : Fragment() {
 //                )
 //            }
 
-        viewpager.adapter = HomeBannerAdapter().apply {
-            viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
-                submitList(banners)
+        setTopBanners()
+    }
+
+    private fun setToolbar() {
+        viewModel.title.observe(viewLifecycleOwner) { title ->
+            binding.title = title
+        }
+    }
+
+    private fun setTopBanners() {
+
+        // viewpager가 반복되므로 with 블럭을 이용하여 코드 개선
+        with(binding.viewpagerHomeBanner) {
+            adapter = HomeBannerAdapter().apply {
+                viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
+                    submitList(banners)
+                }
             }
+            // dp를 pixel로 바꾸기위해서 사용, res/dimens 로 전달
+            val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
+            val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
+            val screenWidth = resources.displayMetrics.widthPixels
+            val offset = screenWidth - pageWidth - pageMargin
+
+            offscreenPageLimit = 3
+            setPageTransformer { page, position ->
+                page.translationX = position * -offset
+            }
+
+            // lambda : 특정 위치에서 tab의 style을 변경할 때, 사용
+            TabLayoutMediator(binding.viewpagerHomeBannerIndicator, this) { tab, position ->
+
+            }.attach()
         }
-
-        // dp를 pixel로 바꾸기위해서 사용, res/dimens 로 전달
-        val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
-        val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
-        val screenWidth = resources.displayMetrics.widthPixels
-        val offset = screenWidth - pageWidth - pageMargin
-
-        viewpager.offscreenPageLimit = 3
-        viewpager.setPageTransformer { page, position ->
-            page.translationX = position * -offset
-        }
-
-        // lambda : 특정 위치에서 tab의 style을 변경할 때, 사용
-        TabLayoutMediator(viewpagerIndicator, viewpager) { tab, position ->
-
-        }.attach()
     }
 }

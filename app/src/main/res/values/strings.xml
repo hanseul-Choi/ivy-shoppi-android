@@ -6,4 +6,14 @@
     <string name="label_category_icon">카테고리</string>
     <string name="label_home_icon">홈</string>
     <string name="label_cart_icon">장바구니</string>
+
+    <!-- discount rate -->
+    <!--
+    %기호에 decimal인 d를 설정해 %기호 앞에 숫자만 배치될 수 있게 정의
+    keyword : string formatting
+    -->
+    <string name="unit_discount_rate">%d%%</string>
+
+    <!-- 원 표현 -->
+    <string name="unit_discount_currency">%s원</string>
 </resources>
