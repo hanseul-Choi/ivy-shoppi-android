@@ -8,6 +8,8 @@ plugins {
 ext {
     navVersion = '2.4.1'
     glideVersion = '4.11.0'
+    viewpager2Version = '1.0.0'
+    gsonVersion = '2.8.9'
 }
 
 task clean(type: Delete) {

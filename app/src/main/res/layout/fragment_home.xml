@@ -55,6 +55,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <!--
+            viewpager2는 tablayout과 함께쓰여 indicator를 보여준다.
+            -->
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager_home_banner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--
+            tabIndicatorHeight : 0dp로 한 이유는 기본 tablayout의 indicator를 없애기 위해
+            -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/viewpager_home_banner_indicator"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewpager_home_banner"
+                app:tabBackground="@drawable/selector_viewpager_indicator"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
