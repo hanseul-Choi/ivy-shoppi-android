@@ -78,4 +78,7 @@ dependencies {
     // viewmodel-coroutine
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1' // viewModel scope 사용가능
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
+    // recyclerView
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
 }
