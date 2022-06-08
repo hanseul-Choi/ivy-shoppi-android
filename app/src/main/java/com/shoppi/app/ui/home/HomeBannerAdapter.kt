@@ -18,7 +18,7 @@ import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 // ListAdapter : data의 List로 받아서 0번째부터 순차적으로 binding함, inflate한 뷰에 그대로 데이터만 변경하여 이점을 얻음
-class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
+class HomeBannerAdapter(private val viewModel: HomeViewModel) : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
     BannerDiffCallback()
 ) {
     private lateinit var binding: ItemHomeBannerBinding
@@ -35,11 +35,12 @@ class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHo
     }
 
     // view? : HomeBanner에서 inflate시킬 뷰
-    class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) : RecyclerView.ViewHolder(binding.root) {
 
         // viewHolder에서 할당받은 view는 itemView로 참조가 가능
         fun bind(banner: Banner) {
             binding.banner = banner
+            binding.viewModel = viewModel
             // 데이터를 바로 바인딩시키는 메소드
             binding.executePendingBindings()
         }

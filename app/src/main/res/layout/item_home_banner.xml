@@ -6,13 +6,18 @@
     <data>
 
         <variable
+            name="viewModel"
+            type="com.shoppi.app.ui.home.HomeViewModel" />
+
+        <variable
             name="banner"
             type="com.shoppi.app.model.Banner" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:onClick="@{() -> viewModel.openProductDetail(banner.productDetail)}">
 
         <ImageView
             android:id="@+id/iv_banner_image"
