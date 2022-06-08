@@ -6,6 +6,7 @@
     </style>
 
     <!-- Text Style -->
+    <!-- TextMedium -->
     <style name="TextMedium" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textColor">@color/shoppi_black_01</item>
     </style>
@@ -23,10 +24,11 @@
         <item name="android:textColor">@color/shoppi_purple</item>
     </style>
 
+    <!-- TextSubtitle -->
     <style name="TextSubtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textColor">@color/shoppi_black_01</item>
     </style>
-    
+
     <style name="TextSubtitle1.Bold">
         <item name="android:textStyle">bold</item>
     </style>
@@ -69,12 +71,22 @@
         <item name="android:textColor">@color/shoppi_black_01</item>
     </style>
 
+    <style name="TextSubtitle3.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TextSubtitle3.Grey03">
         <item name="android:textColor">@color/shoppi_grey_03</item>
     </style>
 
+
+    <!-- TextCaption -->
     <style name="TextCaption1" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textColor">@color/shoppi_black_01</item>
+    </style>
+
+    <style name="TextCaption1.White">
+        <item name="android:textColor">@color/shoppi_white</item>
     </style>
 
     <style name="TextCaption1.Grey05">
@@ -98,7 +110,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- home appbar text style -->
+
+    <!-- TextHeadLine -->
     <style name="TextHeadLine5.Black02" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textColor">@color/shoppi_black_02</item>
     </style>
@@ -106,4 +119,17 @@
     <style name="TextHeadLine5.Black02.Bold" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="TextHeadLine32">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextHeadLine32.White">
+        <item name="android:textColor">@color/shoppi_white</item>
+    </style>
+
+    <style name="TextHeadLine32.White.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

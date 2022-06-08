@@ -29,11 +29,12 @@
             android:layout_height="202dp"
             android:background="@drawable/background_banner_gradient"
             app:layout_constraintBottom_toBottomOf="@id/iv_banner_image"
-            app:layout_constraintStart_toStartOf="@id/iv_banner_image"
-            app:layout_constraintEnd_toEndOf="@id/iv_banner_image"/>
+            app:layout_constraintEnd_toEndOf="@id/iv_banner_image"
+            app:layout_constraintStart_toStartOf="@id/iv_banner_image" />
 
         <TextView
             android:id="@+id/tv_banner_badge"
+            style="@style/TextCaption1.White"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
@@ -44,7 +45,6 @@
             android:paddingEnd="7dp"
             android:paddingBottom="1dp"
             android:text="@{banner.badge.label}"
-            android:textColor="@color/shoppi_white"
             app:layout_constraintBottom_toTopOf="@id/tv_banner_title"
             app:layout_constraintStart_toStartOf="@id/iv_banner_image"
             tools:background="@color/shoppi_grey_02"
@@ -52,6 +52,7 @@
 
         <TextView
             android:id="@+id/tv_banner_title"
+            style="@style/TextHeadLine32.White.Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -87,6 +88,7 @@
 
         <TextView
             android:id="@+id/tv_banner_detail_brand_label"
+            style="@style/TextSubtitle3.Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -102,6 +104,7 @@
 
         <TextView
             android:id="@+id/tv_banner_detail_product_label"
+            style="@style/TextCaption1.Grey03"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
@@ -113,6 +116,7 @@
 
         <TextView
             android:id="@+id/tv_banner_detail_product_discount_rate"
+            style="@style/TextSubtitle2.Purple.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -123,6 +127,7 @@
 
         <TextView
             android:id="@+id/tv_banner_detail_product_discount_price"
+            style="@style/TextSubtitle1.Bold"
             discountRate="@{banner.productDetail.discountRate}"
             priceAmount="@{banner.productDetail.price}"
             android:layout_width="wrap_content"
@@ -134,7 +139,8 @@
 
         <TextView
             android:id="@+id/tv_banner_detail_product_price"
-            priceAmount="@{banner.productDetail.price}"
+            style="@style/TextCaption1.Grey05"
+            priceAmountCenterStroke="@{banner.productDetail.price}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
