@@ -20,10 +20,10 @@ fun applyPriceDiscountRate(view: TextView, price: Int, discountRate: Int) {
     applyPriceFormat(view, discountPrice)
 }
 
-@BindingAdapter("priceAmountCenterStroke")
-fun applyCenterStroke(view: TextView, price: Int) {
-    view.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-
-    val decimalFormat = DecimalFormat("#,###")
-    view.text = view.context.getString(R.string.unit_discount_currency, decimalFormat.format(price))
+@BindingAdapter("priceAmount","strikeThrough")
+fun applyCenterStroke(view: TextView, price: Int, strikeThrough: Boolean) {
+    applyPriceFormat(view, price)
+    if(strikeThrough) {
+        view.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+    }
 }

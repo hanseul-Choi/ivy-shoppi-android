@@ -25,23 +25,3 @@ fun loadCircleImage(view: ImageView, imageUrl: String?) {
             .into(view)
     }
 }
-
-@BindingAdapter("r12ImageUrl")
-fun loadR12ImageUrl(view: ImageView, imageUrl: String?) {
-    if(!imageUrl.isNullOrEmpty()) {
-        GlideApp.with(view)
-            .load(imageUrl)
-            .transform(CenterCrop(), RoundedCorners(12))
-            .into(view)
-    }
-}
-
-@BindingAdapter("r8ImageUrl")
-fun loadR8ImageUrl(view: ImageView, imageUrl: String?) {
-    if(!imageUrl.isNullOrEmpty()) {
-        GlideApp.with(view)
-            .load(imageUrl)
-            .transform(CenterCrop(), RoundedCorners(8))
-            .into(view)
-    }
-}

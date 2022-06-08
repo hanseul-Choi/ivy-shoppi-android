@@ -93,17 +93,22 @@ class HomeFragment : Fragment() {
 //            }
 
         setTopBanners()
+        setNavigation()
+    }
 
+    private fun setNavigation() {
         viewModel.openProductEvent.observe(viewLifecycleOwner, EventObserver {
-            openProductDetail(it.productId)
+            openProductDetail(it)
         })
     }
 
     private fun openProductDetail(productId: String) {
-        findNavController().navigate(R.id.action_home_to_product_detail,
+        findNavController().navigate(
+            R.id.action_home_to_product_detail,
             bundleOf(
                 KEY_PRODUCT_ID to productId
-            ))
+            )
+        )
     }
 
     private fun setToolbar() {

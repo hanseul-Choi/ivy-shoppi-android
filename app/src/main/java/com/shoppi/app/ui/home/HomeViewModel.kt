@@ -18,16 +18,16 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private val _topBanners = MutableLiveData<List<Banner>>()
     val topBanners: LiveData<List<Banner>> = _topBanners
 
-    private val _openProductEvent = MutableLiveData<Event<Product>>()
-    val openProductEvent: LiveData<Event<Product>> = _openProductEvent
+    private val _openProductEvent = MutableLiveData<Event<String>>()
+    val openProductEvent: LiveData<Event<String>> = _openProductEvent
 
     init {
         // viewmodel이 생성될때 해당 데이터를 가져옴
         loadHomeData()
     }
 
-    fun openProductDetail(product: Product) {
-        _openProductEvent.value = Event(product)
+    fun openProductDetail(productId: String) {
+        _openProductEvent.value = Event(productId)
     }
 
     private fun loadHomeData() {

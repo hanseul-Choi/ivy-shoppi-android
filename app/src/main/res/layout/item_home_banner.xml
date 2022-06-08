@@ -17,17 +17,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:onClick="@{() -> viewModel.openProductDetail(banner.productDetail)}">
+        android:onClick="@{() -> viewModel.openProductDetail(banner.productDetail.productId)}">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_banner_image"
-            r12ImageUrl="@{banner.backgroundImageUrl}"
+            imageUrl="@{banner.backgroundImageUrl}"
             android:layout_width="312dp"
             android:layout_height="343dp"
             android:layout_marginStart="16dp"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedBig" />
 
         <View
             android:layout_width="0dp"
@@ -63,6 +64,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
+            android:maxLines="2"
             android:text="@{banner.label}"
             app:layout_constraintBottom_toTopOf="@id/bg_banner_product_detail"
             app:layout_constraintEnd_toEndOf="@id/bg_banner_product_detail"
@@ -71,7 +73,7 @@
 
         <View
             android:id="@+id/bg_banner_product_detail"
-            android:layout_width="288dp"
+            android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
@@ -81,15 +83,16 @@
             app:layout_constraintEnd_toEndOf="@id/iv_banner_image"
             app:layout_constraintStart_toStartOf="@id/iv_banner_image" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_banner_detail_thumbnail"
-            r8ImageUrl="@{banner.productDetail.thumbnailImageUrl}"
+            imageUrl="@{banner.productDetail.thumbnailImageUrl}"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="@id/bg_banner_product_detail"
-            app:layout_constraintTop_toTopOf="@id/bg_banner_product_detail" />
+            app:layout_constraintTop_toTopOf="@id/bg_banner_product_detail"
+            app:shapeAppearanceOverlay="@style/RoundedMedium" />
 
         <TextView
             android:id="@+id/tv_banner_detail_brand_label"
@@ -145,7 +148,8 @@
         <TextView
             android:id="@+id/tv_banner_detail_product_price"
             style="@style/TextCaption1.Grey05"
-            priceAmountCenterStroke="@{banner.productDetail.price}"
+            priceAmount="@{banner.productDetail.price}"
+            strikeThrough="@{true}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
