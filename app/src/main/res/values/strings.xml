@@ -17,4 +17,6 @@
     <!-- 원 표현 -->
     <string name="unit_discount_currency">%s원</string>
     <string name="label_category_new">NEW</string>
+    <string name="take_cart">장바구니 담기</string>
+    <string name="price_coupon">쿠폰 적용가</string>
 </resources>
