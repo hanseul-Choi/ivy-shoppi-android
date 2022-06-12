@@ -8,16 +8,14 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.shoppi.app.*
 import com.shoppi.app.common.KEY_PRODUCT_ID
 import com.shoppi.app.databinding.FragmentHomeBinding
-import com.shoppi.app.model.Product
-import com.shoppi.app.ui.category.CategoryPromotionAdapter
-import com.shoppi.app.ui.common.EventObserver
-import com.shoppi.app.ui.common.ViewModelFactory
+import com.shoppi.app.ui.common.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ProductClickListener {
 
     private val viewModel: HomeViewModel by viewModels {
         ViewModelFactory(requireContext())
@@ -121,11 +119,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun setPromotions() {
-        val promotionAdapter = CategoryPromotionAdapter(findNavController())
-        binding.rvSpecialItems.adapter = promotionAdapter
-
+        val titleAdapter = SectionTitleAdapter()
+        val promotionAdapter = ProductPromotionAdapter(this)
+        binding.rvSpecialItems.adapter = ConcatAdapter(titleAdapter, promotionAdapter)
         viewModel.promotions.observe(viewLifecycleOwner) { promotions ->
-            binding.specialTitle = promotions.title
+            titleAdapter.submitList(listOf(promotions.title))
             promotionAdapter.submitList(promotions.items)
         }
     }
@@ -155,5 +153,15 @@ class HomeFragment : Fragment() {
 
             }.attach()
         }
+    }
+
+    // ProductClickListener
+    override fun onProductClick(productId: String) {
+        findNavController().navigate(
+            R.id.action_home_to_product_detail,
+            bundleOf(
+                KEY_PRODUCT_ID to "desk-1"
+            )
+        )
     }
 }
