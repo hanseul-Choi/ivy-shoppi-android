@@ -2,13 +2,19 @@ package com.shoppi.app.ui.category
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.shoppi.app.R
+import com.shoppi.app.common.KEY_PRODUCT_ID
 import com.shoppi.app.databinding.ItemCategoryPromotionBinding
 import com.shoppi.app.model.Product
 
-class CategoryPromotionAdapter :
+class CategoryPromotionAdapter(
+    private val navController: NavController?
+) :
     ListAdapter<Product, CategoryPromotionAdapter.CategoryPromotionViewHolder>(ProductDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryPromotionViewHolder {
@@ -21,11 +27,21 @@ class CategoryPromotionAdapter :
         holder.bind(getItem(position))
     }
 
-    class CategoryPromotionViewHolder(private val binding: ItemCategoryPromotionBinding) :
+    inner class CategoryPromotionViewHolder(private val binding: ItemCategoryPromotionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(product: Product) {
             binding.product = product
+
+            binding.root.setOnClickListener {
+                navController?.navigate(
+                    R.id.action_home_to_product_detail,
+                    bundleOf(
+                        KEY_PRODUCT_ID to "desk-1"
+                    )
+                )
+            }
+
             binding.executePendingBindings()
         }
     }

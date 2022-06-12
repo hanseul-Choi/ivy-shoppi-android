@@ -121,7 +121,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setPromotions() {
-        val promotionAdapter = CategoryPromotionAdapter()
+        val promotionAdapter = CategoryPromotionAdapter(findNavController())
         binding.rvSpecialItems.adapter = promotionAdapter
 
         viewModel.promotions.observe(viewLifecycleOwner) { promotions ->
