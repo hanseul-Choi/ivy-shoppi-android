@@ -6,5 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class HomeData(
     val title: Title,
     // json 객체 키와의 매핑을 위해(다른 네이밍 사용)
-    @SerializedName("top_banners") val topBanners: List<Banner>
+    @SerializedName("top_banners") val topBanners: List<Banner>,
+    val promotions: Promotion
 )

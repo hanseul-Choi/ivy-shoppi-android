@@ -13,6 +13,7 @@ import com.shoppi.app.*
 import com.shoppi.app.common.KEY_PRODUCT_ID
 import com.shoppi.app.databinding.FragmentHomeBinding
 import com.shoppi.app.model.Product
+import com.shoppi.app.ui.category.CategoryPromotionAdapter
 import com.shoppi.app.ui.common.EventObserver
 import com.shoppi.app.ui.common.ViewModelFactory
 
@@ -93,6 +94,8 @@ class HomeFragment : Fragment() {
 //            }
 
         setTopBanners()
+
+        setPromotions()
         setNavigation()
     }
 
@@ -114,6 +117,16 @@ class HomeFragment : Fragment() {
     private fun setToolbar() {
         viewModel.title.observe(viewLifecycleOwner) { title ->
             binding.title = title
+        }
+    }
+
+    private fun setPromotions() {
+        val promotionAdapter = CategoryPromotionAdapter()
+        binding.rvSpecialItems.adapter = promotionAdapter
+
+        viewModel.promotions.observe(viewLifecycleOwner) { promotions ->
+            binding.specialTitle = promotions.title
+            promotionAdapter.submitList(promotions.items)
         }
     }
 
