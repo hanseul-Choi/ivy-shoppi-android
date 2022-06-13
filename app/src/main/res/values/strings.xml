@@ -19,4 +19,6 @@
     <string name="label_category_new">NEW</string>
     <string name="take_cart">장바구니 담기</string>
     <string name="price_coupon">쿠폰 적용가</string>
+    <string name="cart_appbar_label">장바구니</string>
+    <string name="cart_select_buy_label">선택한 상품 주문하기</string>
 </resources>
