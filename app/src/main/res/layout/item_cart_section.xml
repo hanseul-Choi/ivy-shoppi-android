@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/background_white"
+        android:padding="16dp">
+
+        <CheckBox
+            android:id="@+id/cb_item_check"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/selector_cart_title"
+            android:button="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_cart_item_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toEndOf="@id/cb_item_check"
+            app:layout_constraintTop_toTopOf="@id/cb_item_check"
+            app:shapeAppearanceOverlay="@style/Circle"
+            tools:src="@drawable/img_pdp_top_01" />
+
+        <TextView
+            android:id="@+id/tv_cart_item_title"
+            style="@style/TextCaption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:maxLines="1"
+            app:layout_constraintStart_toEndOf="@id/iv_cart_item_image"
+            app:layout_constraintTop_toTopOf="@id/iv_cart_item_image"
+            tools:text="캐시미어 100% 터틀넥 스웨터" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cb_item_check" />
+
+        <TextView
+            android:id="@+id/tv_cart_item_option"
+            style="@style/TextCaption1.Grey01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="@id/tv_cart_item_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_cart_item_title"
+            tools:text="Free" />
+
+        <ImageView
+            android:id="@+id/iv_item_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_minus"
+            app:layout_constraintStart_toStartOf="@id/tv_cart_item_option"
+            app:layout_constraintTop_toBottomOf="@id/tv_cart_item_option" />
+
+        <TextView
+            android:id="@+id/tv_item_count"
+            style="@style/TextSubtitle2.Black02.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:maxLines="1"
+            app:layout_constraintBottom_toBottomOf="@id/iv_item_minus"
+            app:layout_constraintStart_toEndOf="@id/iv_item_minus"
+            app:layout_constraintTop_toTopOf="@id/iv_item_minus"
+            tools:text="1" />
+
+        <ImageView
+            android:id="@+id/iv_item_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_plus"
+            app:layout_constraintStart_toEndOf="@id/tv_item_count"
+            app:layout_constraintTop_toTopOf="@id/iv_item_minus" />
+
+        <TextView
+            android:id="@+id/tv_item_price"
+            style="@style/TextSubtitle1.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_item_plus"
+            tools:text="81,000원" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
