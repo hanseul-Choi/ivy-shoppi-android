@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,7 +9,8 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/shoppi_bluegrey">
 
         <!--
         android : android sdk 내부에서 정의된 네임스페이스 (runtime에 값 적용)
@@ -18,39 +20,27 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                app:contentInsetStart="0dp"
-                app:layout_scrollFlags="scroll|enterAlways">
-
-                <TextView
-                    style="@style/TextHeadLine5.Black02.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="@string/cart_appbar_label" />
-
-            </androidx.appcompat.widget.Toolbar>
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:title="@string/label_cart"
+                app:titleTextAppearance="@style/TextHeadLine5.Black02.Bold"></androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cart_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/shoppi_bluegrey"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_cart_list_item"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </androidx.core.widget.NestedScrollView>
+            android:layout_marginBottom="72dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/item_cart_section" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -61,14 +51,19 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_cart_select_buy"
                 style="@style/TextSubtitle1.White.Bold"
-                android:layout_width="186dp"
+                android:layout_width="wrap_content"
                 android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/background_gradient_r24"
-                android:text="@string/cart_select_buy_label"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/label_cart_purchase_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

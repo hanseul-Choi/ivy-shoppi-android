@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,24 +13,26 @@
         android:padding="16dp">
 
         <CheckBox
-            android:id="@+id/cb_item_check"
+            android:id="@+id/checkbox_cart_item"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@drawable/selector_cart_title"
-            android:button="@android:color/transparent"
+            android:button="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:checked="true"/>
 
         <TextView
             style="@style/TextSubtitle1.Bold"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="twg. official"
-            app:layout_constraintBottom_toBottomOf="@id/cb_item_check"
-            app:layout_constraintStart_toEndOf="@id/cb_item_check"
-            app:layout_constraintTop_toTopOf="@id/cb_item_check" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/checkbox_cart_item"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
