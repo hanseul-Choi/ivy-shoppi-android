@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="item"
+            type="com.shoppi.app.model.CartItem" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -34,6 +37,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_cart_item_thumbnail"
+                imageUrl="@{item.thumbnailImageUrl}"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
@@ -50,6 +54,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:maxLines="1"
+                android:text="@{item.label}"
                 app:layout_constraintEnd_toStartOf="@id/btn_delete_cart_item"
                 app:layout_constraintStart_toEndOf="@id/iv_cart_item_thumbnail"
                 app:layout_constraintTop_toTopOf="@id/iv_cart_item_thumbnail"
@@ -70,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:maxLines="1"
+                android:text="@{item.type}"
                 app:layout_constraintEnd_toEndOf="@id/tv_cart_item_label"
                 app:layout_constraintStart_toStartOf="@id/tv_cart_item_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_cart_item_label"
@@ -91,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:maxLines="1"
+                android:text="@{item.amount}"
                 app:layout_constraintBottom_toBottomOf="@id/btn_minus_cart_item"
                 app:layout_constraintEnd_toStartOf="@id/btn_plus_cart_item"
                 app:layout_constraintStart_toEndOf="@id/btn_minus_cart_item"
@@ -109,6 +116,7 @@
             <TextView
                 android:id="@+id/tv_cart_item_price"
                 style="@style/TextSubtitle1"
+                priceAmount="@{item.price}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
