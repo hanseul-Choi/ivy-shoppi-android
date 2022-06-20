@@ -57,6 +57,24 @@ class CartAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
+    // ListAdapter와 다르게 안에 있는 data른 전달해주어야함
+    fun submitHeaderAndItemList(items: List<CartItem>) {
+        val itemGroups = items.groupBy { it.brandName }
+        val products = mutableListOf<CartProduct>()
+
+        // map data 다루기
+        itemGroups.entries.forEach { entry ->
+            val header = CartHeader(entry.key)
+            products.add(header)
+            products.addAll(entry.value)
+        }
+
+        cartProducts.addAll(products)
+
+        // adapter에 data변경을 알려야함 -> ListAdapter 내부에는 구현이 되었던 부분
+        notifyItemRangeInserted(cartProducts.size, products.size)
+    }
+
     class HeaderViewHolder(private val binding: ItemCartSectionHeaderBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
