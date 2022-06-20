@@ -81,4 +81,9 @@ dependencies {
 
     // recyclerView
     implementation "androidx.recyclerview:recyclerview:1.2.1"
+
+    // room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 }

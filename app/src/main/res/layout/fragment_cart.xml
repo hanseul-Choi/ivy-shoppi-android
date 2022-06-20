@@ -28,7 +28,7 @@
                 android:layout_height="100dp"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:title="@string/label_cart"
-                app:titleTextAppearance="@style/TextHeadLine5.Black02.Bold"></androidx.appcompat.widget.Toolbar>
+                app:titleTextAppearance="@style/TextHeadLine5.Black02.Bold" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

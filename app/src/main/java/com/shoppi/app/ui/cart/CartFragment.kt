@@ -22,7 +22,7 @@ class CartFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCartBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -38,6 +38,8 @@ class CartFragment: Fragment() {
     private fun setListAdapter() {
         val cartAdapter = CartAdapter()
         binding.rvCartItem.adapter = cartAdapter
+
+        // 이미 데이터의 UI 업데이트 작업
         viewModel.items.observe(viewLifecycleOwner) { cartItems ->
             cartAdapter.submitHeaderAndItemList(cartItems)
         }
